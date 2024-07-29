@@ -378,7 +378,7 @@ class Compiler
             }
             else
             {
-                $segment .= $this->quoteColumnName($key).' = '.$key.' , ';
+                $segment .= $this->quoteColumnName($key).' = ? , ';
                 $bindings[] = $value;
             }
         }

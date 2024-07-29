@@ -1,7 +1,7 @@
 {
-    "name": "requtize/query-builder",
+    "name": "syswd/query-builder",
     "description": "Fast, simple and dependency-free query builder for PHP.",
-    "homepage": "https://github.com/requtize/query-builder",
+    "homepage": "https://github.com/syswd/query-builder",
     "keywords": [ "query builder", "database", "sql" ],
     "license": "MIT",
     "version": "1.0.1",
