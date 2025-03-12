@@ -614,6 +614,14 @@ class QueryBuilder
         return $this;
     }
 
+    public function setPagination($page, $perPage = 20)
+    {
+        $this->limit($page);
+        $this->offset($perPage);
+
+        return $this;
+    }
+
     public function having($key, $operator, $value, $joiner = 'AND')
     {
         $this->querySegments['havings'][] = [
