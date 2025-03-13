@@ -614,12 +614,27 @@ class QueryBuilder
         return $this;
     }
 
-    public function setPagination($page, $perPage = 20)
+    public function paginate($page, $perPage = 20)
     {
-        $this->limit($page);
-        $this->offset($perPage);
+        $page = max(1, (int)$page);
+        $perPage = max(1, (int)$perPage);
 
-        return $this;
+        $queryCount = clone $this;
+
+        $totalCount = $queryCount->count();
+        $totalPage = ceil($totalCount / $perPage);
+        $page = min($page, $totalPage);
+        $offset = ($page - 1) * $perPage;
+
+        $this->limit($perPage);
+        $this->offset($offset);
+
+        $this->page = $page;
+        $this->perPage = $perPage;
+        $this->totalPage = $totalPage;
+        $this->totalCount = $totalCount;
+
+        return $this->all();
     }
 
     public function having($key, $operator, $value, $joiner = 'AND')
