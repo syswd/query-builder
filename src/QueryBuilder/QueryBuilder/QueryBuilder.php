@@ -742,6 +742,11 @@ class QueryBuilder
     {
         if(! $key instanceof \Closure)
         {
+            if(is_string($key))
+            {
+                $key = new Raw($key);
+            }
+
             $key = function ($joinBuilder) use ($key, $operator, $value) {
                 $joinBuilder->on($key, $operator, $value);
             };
